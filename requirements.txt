@@ -1,7 +1,4 @@
-os
 flask
 flask_session
 gunicorn
-tempfile
 flask_sqlalchemy
-
