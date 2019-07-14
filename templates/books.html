@@ -1,0 +1,13 @@
+{% extends "layout.html"%}
+{% block title%}Details Of The Book{% endblock%}
+{% block body %}
+<div>
+    <h1>Details</h1>
+    <ul>
+        <li>Title: {{ detail.book_name }}</li>
+        <li>ISBN code : {{ detail.isbn }}</li>
+        <li>year : {{ detail.year }}</li>
+        <li>Author: <a href="{{ url_for('authors', author_id=detail.author_id) }}">{{ author_detail.author }}</a></li>
+    </ul>
+</div>
+{% endblock %}

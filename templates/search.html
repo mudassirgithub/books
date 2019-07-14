@@ -1,0 +1,34 @@
+{% extends "layout.html"%}
+{% block title%}Search{% endblock%}
+{% block body %}
+<div id="authors">
+    <h1>Authors:</h1>
+    {% if not session["authors"] and get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+    {% else %}
+    <ul>
+        {% for author in session["authors"] %}
+            <li><a href="{{ url_for('authors', author_id=author.id) }}">{{ author.author }}</a></li>
+        {% endfor %}    
+    </ul>
+    {% endif %}
+</div>
+<div id="books">
+    <h1>Books:</h1>
+
+    {% if not session["books"] and get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+    {% else %} 
+    <ul>
+        {% for book in session["books"] %}
+            <li><a href="{{ url_for('books', book_id=book.id) }}">{{ book.book_name }}</a></li>
+        {% endfor %} 
+    </ul>
+    {% endif %}
+    
+</div>
+{% endblock %}

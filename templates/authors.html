@@ -1,0 +1,12 @@
+{% extends "layout.html"%}
+{% block title%}Books BY Author{% endblock%}
+{% block body %}
+<div>
+    <h1>Books By</h1>
+    <ul>
+        {% for book in books %}
+            <li>Title: {{ book.book_name}}, Year: {{ book.year }}.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

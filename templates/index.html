@@ -1,0 +1,31 @@
+{% extends "layout.html"%}
+{% block title%}Index{% endblock%} 
+{% block style%}
+    form {
+        margin:0;
+        padding:80px;
+        text-align: center;
+    }
+    input {
+        margin-top: 20px;
+        width:100%;
+    }
+    button {
+        margin-top: 20px;
+        width:100%;
+        height: 50px;
+    }
+{% endblock %}
+
+{% block body %}
+    <form action="/search" method="post">
+        {% if get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        {% endif %}    
+        <h1>FIND A BOOK</h1>
+        <input autofocus class="form-control form-control-lg" type="text" name="name" placeholder="Author or Title">
+        <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </form>
+{% endblock %}
