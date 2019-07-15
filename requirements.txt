@@ -1,5 +1,3 @@
-os
-tempfile
 flask
 flask_session
 gunicorn
