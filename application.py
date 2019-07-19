@@ -31,14 +31,11 @@ Session(app)
 def index():
     return render_template("index.html")
 
-@app.route("/search", methods=["POST", "GET"])
+@app.route("/search", methods=["GET"])
 def search():
-    if (request.method == "GET"):
-        name = request.args.get("name")
-        if not name:
-            return redirect("/")
-    else:
-        name = request.form.get("name")    
+    name = request.args.get("name")
+    if not name:
+        return redirect("/")    
     authors = Authors.query.with_entities(Authors.id,Authors.author).filter(Authors.author.ilike("%{}%".format(name))).all()
     books = Books.query.with_entities(Books.id,Books.book_name,Books.author_id).filter(Books.book_name.ilike("%{}%".format(name))).all()
     session["authors"] = authors

@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block body %}
-    <form action="/search" method="post">
+    <form action="/search" method="get">
         {% if get_flashed_messages() %}
             <div class="alert alert-danger" role="alert">
                 {{ get_flashed_messages() | join(" ") }}
