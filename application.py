@@ -2,6 +2,7 @@ from flask import Flask, session, render_template, jsonify, request, url_for, fl
 from flask_session import Session
 from tempfile import mkdtemp
 from models import *
+import psycopg2
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
@@ -67,3 +68,8 @@ def books(book_id):
         flash("oops: No book found!")
         return redirect("/")
     return render_template("books.html" , detail=detail, author_detail=author_detail)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    flash("oops: Page Not Found")
+    return redirect("/")    
